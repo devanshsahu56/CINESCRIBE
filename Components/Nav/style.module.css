@@ -1,0 +1,124 @@
+.nav {
+  position: relative;
+  background-color: #151515;
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 96;
+  border-bottom: 1px solid #dadada;
+}
+.mid_div{
+  gap: 1rem;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.left {
+  height: 100%;
+  gap: .75rem;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.logoimg {
+  width: 12rem;
+  height: 100%;
+}
+.dropd {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  float: left;
+  padding: 0.5rem;
+  position: relative;
+  text-decoration: none;
+  transition-duration: 0.5s;
+}
+.drpopt {
+  cursor: pointer;
+
+  text-decoration: none;
+  font-family: "gilroy-regular";
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #fff;
+  opacity: 0;
+  width: 11rem;
+  height: fit-content;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 0.55rem;
+  left: 0;
+  border-radius: 5px;
+  visibility: collapse;
+  overflow: hidden;
+}
+.dropd:hover > .dropdown {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+.drplink {
+  padding: 0.5rem 1rem;
+  list-style: none;
+  clear: both;
+  width: 100%;
+  cursor: pointer;
+}
+.drplink:hover {
+  background-color: rgb(230, 243, 248);
+}
+.lnk {
+  font-family: "gilroy-regular";
+  font-weight: 500;
+  font-size: .9rem;
+  color: #000;
+  text-decoration: none;
+}
+.right {
+  display: flex;
+  width: fit-content;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.right > img {
+  width: 1.7rem;
+  cursor: pointer;
+}
+.en {
+  color: #fff;
+  text-transform: uppercase;
+  border: 1px solid #fff;
+  padding: 0.4rem;
+  font-size: 0.65rem;
+  border-radius: 3px;
+  font-family: "gilroy-regular";
+  font-weight: 600;
+  transition: 0.25s ease-in-out;
+  cursor: pointer;
+}
+.en:hover {
+  color: #212121;
+  background-color: #fff;
+}
+.profile{
+  padding: .3rem;
+  border-radius: 50%;
+  background-color: #4a4a4a;
+}
