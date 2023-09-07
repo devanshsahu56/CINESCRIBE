@@ -13,6 +13,7 @@ import {
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import Link from "next/link";
+import Nav from '@/Components/Nav'
 
 const page = ({ params }) => {
   const [crew, setcrew] = useState([]);
@@ -87,6 +88,7 @@ const page = ({ params }) => {
 
   return (
     <div>
+      <Nav/>
       {tvDetail ? (
         <div className={styles.detscol}>
           <div className={styles.full_container}>

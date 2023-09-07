@@ -1,9 +1,12 @@
 import React from "react";
 import styles from "./style.module.css";
 import Link  from "next/link";
+import Nav from '@/Components/Nav'
+
 const page = () => {
   return (
     <>
+    <Nav/>
     <div className={styles.mainDiv}>
       <div className={styles.img}>
         <img src="../cinema2.jpg" alt="" />

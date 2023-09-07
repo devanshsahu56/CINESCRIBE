@@ -1,29 +1,21 @@
 "use client";
 import axios from "axios";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 
 import styles from "./style.module.css";
 import { asyncActordetails } from "@/store/Actions/popularActions";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  RiListCheck,
-  RiBookmarkFill,
-  RiHeartFill,
-  RiStarFill,
-} from "react-icons/ri";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import Link from "next/link";
+import Nav from '@/Components/Nav'
 
 const page = ({ params }) => {
-  const [crew, setcrew] = useState([]);
   const [cast, setcast] = useState([]);
 
   const Id = params.id;
   const dispatch = useDispatch();
   const { actorDetails } = useSelector((state) => state.popularReducer);
 
-  console.log(actorDetails);
 
   const imgErrorHandler = (e) => {
     e.target.style.display = "none";
@@ -36,7 +28,6 @@ const page = ({ params }) => {
     setcast(data.cast);
   };
 
-  console.log(cast);
 
   useEffect(() => {
     dispatch(asyncActordetails(Id));
@@ -45,6 +36,7 @@ const page = ({ params }) => {
 
   return (
     <div>
+      <Nav/>
       {actorDetails ? (
         <div className={styles.detscol}>
           <div className={styles.full_container}>
@@ -85,7 +77,7 @@ const page = ({ params }) => {
                           key={i}
                           href={`/movie/details/${casts.id}`}
                         >
-                          <div key={cast.id} className={styles.castProfile}>
+                          <div key={cast.id}  className={styles.castProfile}>
                             <div className={styles.top}>
                               <img
                                 onError={imgErrorHandler}

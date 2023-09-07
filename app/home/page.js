@@ -1,9 +1,8 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { UseSelector, useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import {  useDispatch, useSelector } from "react-redux";
 import { asyncTrending } from "@/store/Actions/movieActions";
-import { asyncTrendingTV } from "@/store/Actions/tvshowAction";
 import Welcome from "@/Components/Welcome";
 import Trend from "@/Components/Trend"
 import { removeerror } from "@/store/Reducers/movieReducer";
@@ -11,6 +10,8 @@ import { toast } from "react-toastify";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import styles from "./style.module.css";
+import Nav from '@/Components/Nav'
+
 export const metadata = {
   title: "hello",
 };
@@ -25,7 +26,6 @@ const page = () => {
     dispatch(removeerror());
   }
 
-  console.log(trendingMovies);
   const getColor = (value) => {
     // Define your color logic here
     if (value >= 70) {
@@ -67,6 +67,7 @@ const page = () => {
 
   return (
     <>
+    <Nav/>
       <Welcome />
       <div className={styles.movieSec}>
         <h1>Trending Movies</h1>

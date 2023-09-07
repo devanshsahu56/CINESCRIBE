@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import "react-circular-progressbar/dist/styles.css";
 import ReactPaginate from "react-paginate";
 import styles from "@/app/styles/style.module.css";
+import Nav from '@/Components/Nav'
 
 export const metadata = {
   title: "hello",
@@ -24,7 +25,6 @@ const page = () => {
     });
     dispatch(removeerror());
   }
-  console.log(popularActor);
   const pages = popularActor.total_pages
 
   const handlePageClick = (e) => {
@@ -37,6 +37,7 @@ const page = () => {
 
   return (
     <>
+    <Nav/>
       <div className={styles.movieSec}>
         <h1>Popular People</h1>
         <div className={styles.movieDiv}>

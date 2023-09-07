@@ -7,6 +7,7 @@ import styles from "./style.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { RiSearchLine } from "react-icons/ri";
+import Nav from '@/Components/Nav'
 
 const searchResultPage = () => {
   const router = useRouter();
@@ -59,9 +60,7 @@ const searchResultPage = () => {
       );
       setSearchResults(data.results);
       setPageCount(data.total_pages);
-      console.log(data);
     } catch (error) {
-      console.log(error);
     }
   };
 
@@ -71,7 +70,6 @@ const searchResultPage = () => {
   };
 
   const handlePageClick = (e) => {
-    console.log(e);
     setPage(e.selected + 1);
   };
 
@@ -80,6 +78,8 @@ const searchResultPage = () => {
   }, [SearchResults, page]);
 
   return (
+    <>
+    <Nav/>
     <div className={styles.container}>
       <form className={styles.form} onSubmit={searchHandler}>
         <button>
@@ -115,21 +115,9 @@ const searchResultPage = () => {
         breakLinkClassName={styles.brlb}
       />
     </div>
+    </>
   );
 };
 
 export default searchResultPage;
 
-// import React, { useContext } from "react";
-//  import styles from "./style.module.css";
-// import Link from "next/link";
-
-// const search = () => {
-//   const [data, setData] = useContext(CentralisedData);
-//   let listRender = <p>loading...</p>;
-//
-//   console.log(data);
-//   return <div className={styles.cardContainer}>{listRender}</div>;
-// };
-
-// export default search;

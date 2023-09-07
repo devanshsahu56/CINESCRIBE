@@ -2,7 +2,7 @@ import axios from "axios";
 import {
   addPopularActor,
   adderror,
-  addActorDetails
+  addActorDetails,
 } from "../Reducers/popularReducer";
 
 export const asyncPopularActors = () => async (dispatch, getState) => {
@@ -13,7 +13,7 @@ export const asyncPopularActors = () => async (dispatch, getState) => {
     );
     dispatch(addPopularActor(data));
   } catch (error) {
-    console.log(error)
+    dispatch(adderror(error.response.data.status_message));
   }
 };
 export const asyncActordetails = (Id) => async (dispatch, getState) => {
@@ -23,6 +23,6 @@ export const asyncActordetails = (Id) => async (dispatch, getState) => {
     );
     dispatch(addActorDetails(data));
   } catch (error) {
-    console.log(error)
+    dispatch(adderror(error.response.data.status_message));
   }
 };

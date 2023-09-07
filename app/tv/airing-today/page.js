@@ -9,6 +9,7 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import ReactPaginate from "react-paginate";
 import styles from "@/app/styles/style.module.css";
+import Nav from '@/Components/Nav'
 
 export const metadata = {
   title: "hello",
@@ -23,7 +24,6 @@ const page = () => {
     });
     dispatch(removeerror());
   }
-  console.log(airToday)
   const getColor = (value) => {
     // Define your color logic here
     if (value >= 70) {
@@ -70,6 +70,7 @@ const page = () => {
 
   return (
     <>
+    <Nav/>
       <div className={styles.movieSec}>
         <h1>TV Shows Airing Today</h1>
         <div className={styles.movieDiv}>

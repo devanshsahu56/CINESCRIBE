@@ -17,7 +17,7 @@ export const asyncPopularTvShow = () => async (dispatch, getState) => {
     );
     dispatch(addPopularTV(data.results));
   } catch (error) {
-    console.log(error);
+    dispatch(adderror(error.response.data.status_message));
   }
 };
 export const asyncTopRated = () => async (dispatch, getState) => {
@@ -28,7 +28,7 @@ export const asyncTopRated = () => async (dispatch, getState) => {
     );
     dispatch(addTopRated(data.results));
   } catch (error) {
-    console.log(error);
+    dispatch(adderror(error.response.data.status_message));
   }
 };
 export const asyncAiringToday = () => async (dispatch, getState) => {
@@ -39,7 +39,7 @@ export const asyncAiringToday = () => async (dispatch, getState) => {
     );
     dispatch(addAiringToday(data.results));
   } catch (error) {
-    console.log(error);
+    dispatch(adderror(error.response.data.status_message));
   }
 };
 export const asyncOnTheAir = () => async (dispatch, getState) => {
@@ -50,7 +50,7 @@ export const asyncOnTheAir = () => async (dispatch, getState) => {
     );
     dispatch(addOnTheAir(data.results));
   } catch (error) {
-    console.log(error);
+    dispatch(adderror(error.response.data.status_message));
   }
 };
 export const asyncTVdetails = (Id) => async (dispatch, getState) => {
@@ -60,7 +60,7 @@ export const asyncTVdetails = (Id) => async (dispatch, getState) => {
     );
     dispatch(addTVdetails(data));
   } catch (error) {
-    console.log(error);
+    dispatch(adderror(error.response.data.status_message));
   }
 };
 export const asyncTrendingTV = () => async (dispatch, getState) => {
@@ -70,6 +70,6 @@ export const asyncTrendingTV = () => async (dispatch, getState) => {
     );
     dispatch(addTrendingTV(data.results));
   } catch (error) {
-    console.log(error);
+    dispatch(adderror(error.response.data.status_message));
   }
 };

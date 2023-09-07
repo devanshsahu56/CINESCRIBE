@@ -10,6 +10,8 @@ import {
   RiHeartFill,
   RiStarFill,
 } from "react-icons/ri";
+import Nav from '@/Components/Nav'
+
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import Link from "next/link";
@@ -23,7 +25,6 @@ const page = ({ params }) => {
   const dispatch = useDispatch();
   const { movieDetails } = useSelector((state) => state.movieReducer);
 
-  console.log(movieDetails);
 
   const getColor = (value) => {
     // Define your color logic here
@@ -84,7 +85,6 @@ const page = ({ params }) => {
     setcast(data.cast);
   };
 
-  console.log(cast);
 
   useEffect(() => {
     dispatch(asyncMovieDetails(Id));
@@ -93,6 +93,7 @@ const page = ({ params }) => {
 
   return (
     <div>
+      <Nav/>
       {movieDetails ? (
         <div className={styles.detscol}>
           <div className={styles.full_container}>
@@ -122,7 +123,7 @@ const page = ({ params }) => {
                 </span>
               </h1>
               <p className={styles.rjt}>
-                {} • {movieDetails.genres?.map((elem) => elem.name).join(", ")}{" "}
+                {formatDate(movieDetails.release_date)} • {movieDetails.genres?.map((elem) => elem.name).join(", ")}{" "}
                 • {timeconvert(movieDetails.runtime)}
               </p>
               <div className={styles.container_icon}>

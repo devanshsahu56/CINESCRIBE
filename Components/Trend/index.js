@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { UseSelector, useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { asyncTrendingTV } from "@/store/Actions/tvshowAction";
 import { removeerror } from "@/store/Reducers/movieReducer";
 import { toast } from "react-toastify";
@@ -22,7 +22,6 @@ const page = () => {
     dispatch(removeerror());
   }
 
-  console.log(trendingTv);
   const getColor = (value) => {
     // Define your color logic here
     if (value >= 70) {
@@ -69,7 +68,7 @@ const page = () => {
         <div className={styles.movieDiv}>
           {trendingTv?.map((m, i) => {
             return (
-              <Link className={styles.link} href={`/tv/details/${m.id}`}>
+              <Link className={styles.link} key={i} href={`/tv/details/${m.id}`}>
                 <div className="me-3 mb-3" key={m.id}>
                   <div className={styles.cardImg}>
                     <img
