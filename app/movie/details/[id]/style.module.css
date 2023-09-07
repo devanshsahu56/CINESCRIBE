@@ -1,0 +1,295 @@
+.full_container {
+  height: 90vh;
+  width: 100%;
+  padding: 3.5rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #151515;
+}
+.para {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imgcont {
+  border: 1px solid #dadada;
+  border-radius: 25px;
+  overflow: hidden;
+  height: 90%;
+  width: 95%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000000;
+  z-index: 1;
+}
+.imgcont img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: left;
+  filter: opacity(0.2);
+}
+
+.img_sec {
+  background-image: url(/public/defaultimg.jpg);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 3;
+  height: 93%;
+  width: 40vh;
+  border-radius: 20px;
+}
+
+.img_sec img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.details_sec {
+  height: fit-content;
+  width: 140vh;
+  z-index: 5;
+  position: relative;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 3vmax;
+}
+.details_sec h1 {
+  color: #fff;
+  font-size: 2rem;
+  font-family: "roboto mono bold";
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 5px;
+}
+.details_sec h4{
+  color: #ffffffad;
+  font-style: italic;
+  font-family: "roboto";
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.year {
+  font-size: 1.95rem;
+  font-weight: 100;
+  color: #ffffff87;
+}
+
+.rjt {
+  color: #fff;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+}
+.ic_sec {
+  padding: 1.1rem;
+  border-radius: 50%;
+  background-color: #032541;
+}
+.container_icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.CircularProgressbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5rem;
+  width: 5rem;
+  background-color: #081c22;
+  padding: 5px;
+  border-radius: 50%;
+}
+.CircularProgress {
+  font-family: "roboto mono semibold";
+  font-weight: 600;
+}
+.overview{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.overview h1{
+  font-family: "roboto";
+  font-size: 1.25rem;
+  letter-spacing: 1.5px;
+}
+.overview p{
+  color: #fff;
+}
+.crew{
+  margin-top: 1.5rem;
+  color: #fff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.director{
+  margin-right: 50px;
+  color: #fff;
+}
+.director h4{
+  font-size: 1rem;
+  line-height: 1px;
+  font-weight: 600;
+  color: #fff;
+}
+.director p{
+  font-size: .85rem;
+  color: #ffffffcc;
+}.castNrevenue{
+  display: flex;
+  width: 100%;
+  /* min-height: 80vh; */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.cast{
+  position: relative;
+  width: 70%;
+  /* background-color: red; */
+  height: fit-content;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.cast>h2{
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.castBox{
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-left: 2vmax;
+}
+
+.cast::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px; /* Adjust the width of the gradient fade */
+  height: 100%;
+  background: linear-gradient(to right, transparent, #151515);
+  pointer-events: none; /* Prevent the gradient from blocking interactions */
+}
+
+.castBox::-webkit-scrollbar-track
+{
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+border-radius: 10px;
+background-color: #F5F5F5;
+}
+
+.castBox::-webkit-scrollbar
+{
+/* width: 5px; */
+height: 7px;
+background-color: #F5F5F5;
+}
+
+.castBox::-webkit-scrollbar-thumb
+{
+ height: 5px; 
+border-radius: 10px;
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+background-color: #aaaaaa;
+}
+
+.castProfile{
+  border: .5px solid #dadada;
+  margin-right: 30px;
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 12vmax;
+  background-color: #fff;
+}
+
+.top{
+  width: 100%;
+  height: 15vmax;
+  background-image: url(https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg);
+  background-size: cover;
+  background-position: center;
+}
+
+.top img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.bottom{
+  /* width: 100%; */
+  padding: 10px;
+}
+
+.bottom h4{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #000;
+}
+
+.bottom h5{
+  color: #000;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.revenue{
+  padding-top: 60px;
+  padding-left: 50px;
+  width: 30%;
+  /* background-color: #032541; */
+}
+
+.original{
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.original h4{
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.original p{
+  font-size: .85rem;
+  color: #a9a9a9;
+}
+.detscol{
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  padding-bottom: 5vmax;
+  background-color: #151515;
+
+}

@@ -1,31 +1,29 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { UseSelector, useDispatch, useSelector } from "react-redux";
-import { asyncTrending } from "@/store/Actions/movieActions";
-import { asyncTrendingTV } from "@/store/Actions/tvshowAction";
-import Welcome from "@/Components/Welcome";
-import Trend from "@/Components/Trend"
-import { removeerror } from "@/store/Reducers/movieReducer";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { asyncAiringToday } from "@/store/Actions/tvshowAction";
+import { changepage, removeerror } from "@/store/Reducers/tvshowReducer";
 import { toast } from "react-toastify";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import styles from "./style.module.css";
+import ReactPaginate from "react-paginate";
+import styles from "@/app/styles/style.module.css";
+
 export const metadata = {
   title: "hello",
 };
 
 const page = () => {
   const dispatch = useDispatch();
-  const { trendingMovies, error } = useSelector((state) => state.movieReducer);
+  const { airToday, page, error } = useSelector((state) => state.tvshowReducer);
   if (error.length > 0) {
     error.map((e, i) => {
       toast.error(e);
     });
     dispatch(removeerror());
   }
-
-  console.log(trendingMovies);
+  console.log(airToday)
   const getColor = (value) => {
     // Define your color logic here
     if (value >= 70) {
@@ -61,19 +59,27 @@ const page = () => {
     }
   };
 
+  const handlePageClick = (e) => {
+    dispatch(changepage(e.selected + 1));
+  };
+
   useEffect(() => {
-    dispatch(asyncTrending());
+    dispatch(asyncAiringToday());
+    window.scrollTo(0, 0);
   }, [page]);
 
   return (
     <>
-      <Welcome />
       <div className={styles.movieSec}>
-        <h1>Trending Movies</h1>
+        <h1>TV Shows Airing Today</h1>
         <div className={styles.movieDiv}>
-          {trendingMovies.map((m, i) => {
+          {airToday.map((m, i) => {
             return (
-              <Link className={styles.link} href={`/movie/details/${m.id}`}>
+              <Link
+                className={styles.link}
+                key={m.id}
+                href={`/tv/details/${m.id}`}
+              >
                 <div className="me-3 mb-3" key={m.id}>
                   <div className={styles.cardImg}>
                     <img
@@ -100,15 +106,37 @@ const page = () => {
                       />
                     </div>
                   </div>
-                  <p>{m.title}</p>
-                  <h5>{formatDate(m.release_date)}</h5>
+                  <p>{m.name}</p>
+                  <h5>{formatDate(m.first_air_date)}</h5>
                 </div>
               </Link>
             );
           })}
         </div>
+        <div className={styles.button_sec}>
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel="Next ▶"
+            onPageChange={handlePageClick}
+            onClick={handlePageClick}
+            pageCount={100}
+            previousLabel="◀ Previous"
+            renderOnZeroPageCount={null}
+            initialPage={0}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={2}
+            activeClassName={styles.active}
+            className={styles.paginate}
+            pageClassName={styles.pagestyle}
+            pageLinkClassName={styles.pagestyleset}
+            previousClassName={styles.pagestyle}
+            previousLinkClassName={styles.pagestyleset}
+            nextClassName={styles.pagestyle}
+            nextLinkClassName={styles.pagestyleset}
+            breakLinkClassName={styles.brlb}
+          />
+        </div>
       </div>
-      <Trend />
     </>
   );
 };

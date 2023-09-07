@@ -19,16 +19,15 @@
 }
 .left {
   height: 100%;
-  gap: .75rem;
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  position: relative;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
-.logoimg {
+.left img {
   width: 12rem;
-  height: 100%;
+
 }
 .dropd {
   text-decoration: none;

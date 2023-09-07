@@ -6,15 +6,17 @@ import ReactPaginate from "react-paginate";
 import styles from "./style.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { RiSearchLine } from "react-icons/ri";
 
 const searchResultPage = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(1);
   const searchparams = useSearchParams();
   const search = searchparams.get("query");
   const pageno = searchparams.get("page");
 
+  const [slug, setSlug] = useState(search);
   const [SearchResults, setSearchResults] = useState([]);
   let renderData = <p>loading...</p>;
   if (SearchResults.length > 0) {
@@ -32,10 +34,17 @@ const searchResultPage = () => {
             />
           </div>
           <div className={styles.details}>
-            <Link className={styles.h1} href={`/details/${m.id}`}>
-              <h1>{m.original_title || m.original_name}</h1>
+            <Link
+              className={styles.h1}
+              href={
+                m.media_type == "movie"
+                  ? `/movie/details/${m.id}`
+                  : `/tv/details/${m.id}`
+              }
+            >
+              <h1>{m.title || m.original_title || m.name}</h1>
             </Link>
-            <h3>{m.release_date}</h3>
+            <h3>{m.release_date || m.first_air_date}</h3>
             <p className={styles.det}>{m.overview}</p>
           </div>
         </div>
@@ -49,26 +58,40 @@ const searchResultPage = () => {
         `https://api.themoviedb.org/3/search/multi?api_key=223667d1239871fc4b6eeef8d0d6def8&query=${search}&page=${page}`
       );
       setSearchResults(data.results);
-      setPageCount(data.total_pages)
-      console.log(data)
+      setPageCount(data.total_pages);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handlePageClick = (e)=>{
-    console.log(e)
-    setPage(e.selected + 1)
-  }
+  const searchHandler = (e) => {
+    e.preventDefault();
+    router.push(`/searchlist?query=${slug}`);
+  };
 
+  const handlePageClick = (e) => {
+    console.log(e);
+    setPage(e.selected + 1);
+  };
 
   useEffect(() => {
     fetchData();
-    // window.scrollTo(0, 0);
-  }, [page]);
+  }, [SearchResults, page]);
 
   return (
     <div className={styles.container}>
+      <form className={styles.form} onSubmit={searchHandler}>
+        <button>
+          <RiSearchLine color="#4a4a4a" cursor="pointer" size={23} />
+        </button>
+        <input
+          value={slug.replace(/%20/g, " ")}
+          onChange={(e) => setSlug(e.target.value)}
+          type="text"
+          placeholder="Search for movie, tv show....."
+        />
+      </form>
       <div className={styles.cardContainer}>{renderData}</div>
       <ReactPaginate
         breakLabel="..."

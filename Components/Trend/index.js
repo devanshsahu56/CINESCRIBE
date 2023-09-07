@@ -2,22 +2,19 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { UseSelector, useDispatch, useSelector } from "react-redux";
-import { asyncTrending } from "@/store/Actions/movieActions";
 import { asyncTrendingTV } from "@/store/Actions/tvshowAction";
-import Welcome from "@/Components/Welcome";
-import Trend from "@/Components/Trend"
 import { removeerror } from "@/store/Reducers/movieReducer";
 import { toast } from "react-toastify";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import styles from "./style.module.css";
+import styles from "@/app/home/style.module.css";
 export const metadata = {
   title: "hello",
 };
 
 const page = () => {
   const dispatch = useDispatch();
-  const { trendingMovies, error } = useSelector((state) => state.movieReducer);
+  const { trendingTv, error } = useSelector((state) => state.tvshowReducer);
   if (error.length > 0) {
     error.map((e, i) => {
       toast.error(e);
@@ -25,7 +22,7 @@ const page = () => {
     dispatch(removeerror());
   }
 
-  console.log(trendingMovies);
+  console.log(trendingTv);
   const getColor = (value) => {
     // Define your color logic here
     if (value >= 70) {
@@ -62,18 +59,17 @@ const page = () => {
   };
 
   useEffect(() => {
-    dispatch(asyncTrending());
+    dispatch(asyncTrendingTV());
   }, [page]);
 
   return (
     <>
-      <Welcome />
       <div className={styles.movieSec}>
-        <h1>Trending Movies</h1>
+        <h1>Trending on TV</h1>
         <div className={styles.movieDiv}>
-          {trendingMovies.map((m, i) => {
+          {trendingTv?.map((m, i) => {
             return (
-              <Link className={styles.link} href={`/movie/details/${m.id}`}>
+              <Link className={styles.link} href={`/tv/details/${m.id}`}>
                 <div className="me-3 mb-3" key={m.id}>
                   <div className={styles.cardImg}>
                     <img
@@ -100,15 +96,14 @@ const page = () => {
                       />
                     </div>
                   </div>
-                  <p>{m.title}</p>
-                  <h5>{formatDate(m.release_date)}</h5>
+                  <p>{m.name}</p>
+                  <h5>{formatDate(m.first_air_date)}</h5>
                 </div>
               </Link>
             );
           })}
         </div>
       </div>
-      <Trend />
     </>
   );
 };

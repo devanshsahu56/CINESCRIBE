@@ -1,67 +1,70 @@
 import React from "react";
 import styles from "./style.module.css";
-import { RiSearchLine, RiNotification2Fill ,RiUser3Line} from "react-icons/ri";
-
-import Link from "next/link";
+import { RiSearchLine, RiNotification2Fill, RiUser3Line } from "react-icons/ri";
+ import Link from "next/link";
 const page = () => {
+
+
+  const pageHandler = () => {
+    dispatch(changePage(1))
+  }
+
   return (
     <>
       <div className={styles.nav}>
+          <Link href="/home">
         <div className={styles.left}>
-          <Link href='/home'>
             <img className={styles.logoimg} src="../logo.png" alt="" />
-          </Link>
         </div>
+          </Link>
         <div className={styles.mid_div}>
-        <li className={styles.dropd}>
-            <Link className={styles.drpopt} href="/">
-              Movies
-            </Link>
+          <li className={styles.dropd}>
+            <div className={styles.drpopt}>Movies</div>
+
             <ul className={styles.dropdown}>
               <li className={styles.drplink}>
-                <Link className={styles.lnk} href="/">
+                <Link className={styles.lnk} href="/movie/popular">
                   Popular
                 </Link>
               </li>
               <li className={styles.drplink}>
-                <Link className={styles.lnk} href="/">
+                <Link className={styles.lnk} href="/movie/now_playing">
                   Now Playing
                 </Link>
               </li>
               <li className={styles.drplink}>
-                <Link className={styles.lnk} href="/">
+                <Link className={styles.lnk} href="/movie/upcoming">
                   Upcoming
                 </Link>
               </li>
               <li className={styles.drplink}>
-                <Link className={styles.lnk} href="/">
+                <Link className={styles.lnk} href="/movie/top-rated">
                   Top-Rated
                 </Link>
               </li>
             </ul>
           </li>
           <li className={styles.dropd}>
-            <Link className={styles.drpopt} href="/">
-              TV Shows
-            </Link>
+          <div className={styles.drpopt}>TV Shows</div>
+
             <ul className={styles.dropdown}>
               <li className={styles.drplink}>
-                <Link className={styles.lnk} href="/">
+                <Link className={styles.lnk} href="/tv/popular">
                   Popular
                 </Link>
               </li>
               <li className={styles.drplink}>
-                <Link className={styles.lnk} href="/">
+                <Link className={styles.lnk} href="/tv/airing-today">
                   Airing Today
                 </Link>
               </li>
               <li className={styles.drplink}>
-                <Link className={styles.lnk} href="/">
+                <Link className={styles.lnk} href="/tv/on-the-air">
                   On TV
                 </Link>
               </li>
               <li className={styles.drplink}>
-                <Link className={styles.lnk} href="/">
+                <Link className={styles.lnk} href="/tv/top_rated">
                   Top-Rated
                 </Link>
               </li>
@@ -73,46 +76,25 @@ const page = () => {
             </Link>
             <ul className={styles.dropdown}>
               <li className={styles.drplink}>
-                <Link className={styles.lnk} href="/">
+                <Link className={styles.lnk} href="/person">
                   Popular People
                 </Link>
               </li>
             </ul>
           </li>
-          <li className={styles.dropd}>
-            <Link className={styles.drpopt} href="/">
-              More
-            </Link>
-            <ul className={styles.dropdown}>
-              <li className={styles.drplink}>
-                <Link className={styles.lnk} href="/">
-                  Discussions
-                </Link>
-              </li>
-              <li className={styles.drplink}>
-                <Link className={styles.lnk} href="/">
-                  Leaderboard
-                </Link>
-              </li>
-              <li className={styles.drplink}>
-                <Link className={styles.lnk} href="/">
-                  Support
-                </Link>
-              </li>
-              <li className={styles.drplink}>
-                <Link className={styles.lnk} href="/">
-                  API
-                </Link>
-              </li>
-            </ul>
-          </li>
+          
         </div>
         <div className={styles.right}>
           <img src="../plus.svg" alt="" />
           <div className={styles.en}>en</div>
           <RiNotification2Fill color=" #fff" cursor="pointer" size={20} />
-          <RiUser3Line className={styles.profile} color=" #fff" cursor="pointer" size={25}/>
-          <RiSearchLine color="#4a4a4a" cursor="pointer" size={23}/>
+          <RiUser3Line
+            className={styles.profile}
+            color=" #fff"
+            cursor="pointer"
+            size={25}
+          />
+          <RiSearchLine color="#4a4a4a" cursor="pointer" size={23} />
         </div>
       </div>
     </>

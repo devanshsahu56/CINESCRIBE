@@ -1,0 +1,142 @@
+.movieSec {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    background-color: #151515;
+    padding-top: 5vh;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    gap: 1.4vmax;
+    padding-bottom: 5vh;
+  }
+  .movieSec h1 {
+    margin-bottom: 5vh;
+    text-decoration: underline;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  .movieDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    align-items: flex-start;
+    gap: 4vmax;
+  }
+  
+  .cardImg {
+    width: 100%;
+    position: relative;
+    height: 80%;
+    margin-bottom: 20px;
+  }
+  .cardImg img {
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .link {
+    position: relative;
+    width: 40vh;
+    height: 75vh;
+    text-decoration: none;
+    color: #fff;
+  }
+  .link p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: "roboto";
+  }
+  
+  .CircularProgressbar {
+    position: absolute;
+    bottom: -5%;
+    left: 5%;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    width: 3rem;
+    background-color: #081c22;
+    padding: 5px;
+    border-radius: 50%;
+  }
+  .CircularProgress {
+    font-family: "roboto mono semibold";
+    font-weight: 600;
+  }
+  .link h5 {
+    font-size: 0.75rem;
+    margin-top: 5px;
+    font-weight: 100;
+    color: #b3b3b3;
+  }
+  .button{
+    padding: .75rem 1.5rem;
+    font-size: 1.15rem;
+    border: 1px solid #b3b3b3;
+    background-color: #b3b3b3;
+    color: #000;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .pageno{
+    color: #fff;
+    padding: .75rem 1.2rem;
+    font-size: 1.15rem;
+    border: 1px solid #b3b3b3;
+    border-radius: 5px;
+    cursor: none;
+  }
+  .button_sec{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vmax;
+  }
+  
+  .paginate {
+    cursor: default;
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    gap: 2vmax;
+  }
+  .pagestyle{
+      position: relative;
+    color: #fff;    
+  }
+  
+  .pagestyleset:hover{
+      background-color: #929292;
+  }
+  .active {
+    padding: 0.5rem 0rem;
+    cursor: pointer;
+    position: relative;
+    background-color: #fefefe;
+    color: #000000 ;
+     border-radius: 5px;
+  
+  }
+  .active:hover{ 
+      background-color: #fefefe;
+  }
+  .pagestyleset {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: 0.5px solid #c5c5c5;
+    border-radius: 5px;
+    position: relative;
+  }
+  .brlb{
+    color: #fff;
+  }
