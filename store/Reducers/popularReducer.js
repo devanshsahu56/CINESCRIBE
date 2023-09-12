@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   popularActor: [],
-  page: 1,
   error: [],
-  actorDetails:{}
+  actorDetails: {},
+  page: 1,
 };
 
 export const popularReducer = createSlice({
@@ -29,4 +29,10 @@ export const popularReducer = createSlice({
   },
 });
 export default popularReducer.reducer;
-export const { adderror, removeerror, changepage, addPopularActor, addActorDetails } = popularReducer.actions;
+export const {
+  adderror,
+  removeerror,
+  changepage,
+  addPopularActor,
+  addActorDetails,
+} = popularReducer.actions;

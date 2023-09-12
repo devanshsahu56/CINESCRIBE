@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncPopularActors } from "@/store/Actions/popularActions";
-import { changepage, removeerror } from "@/store/Reducers/movieReducer";
+import { changepage, removeerror } from "@/store/Reducers/popularReducer";
 import { toast } from "react-toastify";
 import "react-circular-progressbar/dist/styles.css";
 import ReactPaginate from "react-paginate";
@@ -25,14 +25,14 @@ const page = () => {
     });
     dispatch(removeerror());
   }
-  const pages = popularActor.total_pages
+  
 
   const handlePageClick = (e) => {
-    dispatch(changepage(e.selected + 1));
-  };
-
+    dispatch(changepage((e.selected + 1)))
+  }
   useEffect(() => {
     dispatch(asyncPopularActors());
+    window.scrollTo(0, 0);
   }, [page]);
 
   return (
@@ -68,7 +68,7 @@ const page = () => {
             nextLabel="Next ▶"
             onPageChange={handlePageClick}
             onClick={handlePageClick}
-            pageCount={pages}
+            pageCount={popularActor.total_pages}
             previousLabel="◀ Previous"
             renderOnZeroPageCount={null}
             initialPage={0}

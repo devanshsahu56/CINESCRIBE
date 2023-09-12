@@ -70,6 +70,7 @@ const page = () => {
 
   useEffect(() => {
     dispatch(asyncNowPlaying());
+    window.scrollTo(0, 0);
     
   }, [page]);
 
@@ -79,7 +80,7 @@ const page = () => {
       <div className={styles.movieSec}>
         <h1>Now Playing Movies</h1>
         <div className={styles.movieDiv}>
-          {nowplaying.map((m, i) => {
+          {nowplaying.results?.map((m, i) => {
             return (
               <Link className={styles.link} key={m.id} href={`/movie/details/${m.id}`}>
                 <div className="me-3 mb-3" key={m.id}>
@@ -121,7 +122,7 @@ const page = () => {
         nextLabel="Next ▶"
         onPageChange={handlePageClick}
         onClick={handlePageClick}
-        pageCount={100}
+        pageCount={nowplaying.total_pages}
         previousLabel="◀ Previous"
         renderOnZeroPageCount={null}
         initialPage={0}

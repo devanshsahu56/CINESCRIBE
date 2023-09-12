@@ -1,88 +1,96 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import styles from "./style.module.css";
 import { RiSearchLine, RiNotification2Fill, RiUser3Line } from "react-icons/ri";
- import Link from "next/link";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 const page = () => {
-
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [slug, setSlug] = useState("");
+  const toogleSearchBar = () => {
+    setIsSearchVisible(!isSearchVisible);
+  };
+  const router = useRouter();
+  const searchHandler = (e) => {
+    e.preventDefault();
+    router.push(`/searchlist?query=${slug}`);
+  };
 
   const pageHandler = () => {
-    dispatch(changePage(1))
-  }
+    dispatch(changePage(1));
+  };
 
   return (
     <>
       <div className={styles.nav}>
-          <Link href="/home">
-        <div className={styles.left}>
+        <Link href="/home">
+          <div className={styles.left}>
             <img className={styles.logoimg} src="../logo.png" alt="" />
-        </div>
-          </Link>
+          </div>
+        </Link>
         <div className={styles.mid_div}>
           <li className={styles.dropd}>
             <div className={styles.drpopt}>Movies</div>
 
             <ul className={styles.dropdown}>
-              <li className={styles.drplink}>
                 <Link className={styles.lnk} href="/movie/popular">
+              <li className={styles.drplink}>
                   Popular
-                </Link>
               </li>
-              <li className={styles.drplink}>
+                </Link>
                 <Link className={styles.lnk} href="/movie/now_playing">
+              <li className={styles.drplink}>
                   Now Playing
-                </Link>
               </li>
-              <li className={styles.drplink}>
+                </Link>
                 <Link className={styles.lnk} href="/movie/upcoming">
-                  Upcoming
-                </Link>
-              </li>
               <li className={styles.drplink}>
-                <Link className={styles.lnk} href="/movie/top-rated">
-                  Top-Rated
-                </Link>
+                  Upcoming
               </li>
+                </Link>
+                <Link className={styles.lnk} href="/movie/top-rated">
+              <li className={styles.drplink}>
+                  Top-Rated
+              </li>
+                </Link>
             </ul>
           </li>
           <li className={styles.dropd}>
-          <div className={styles.drpopt}>TV Shows</div>
+            <div className={styles.drpopt}>TV Shows</div>
 
             <ul className={styles.dropdown}>
-              <li className={styles.drplink}>
                 <Link className={styles.lnk} href="/tv/popular">
+              <li className={styles.drplink}>
                   Popular
-                </Link>
               </li>
-              <li className={styles.drplink}>
+                </Link>
                 <Link className={styles.lnk} href="/tv/airing-today">
+              <li className={styles.drplink}>
                   Airing Today
-                </Link>
               </li>
-              <li className={styles.drplink}>
+                </Link>
                 <Link className={styles.lnk} href="/tv/on-the-air">
-                  On TV
-                </Link>
-              </li>
               <li className={styles.drplink}>
-                <Link className={styles.lnk} href="/tv/top_rated">
-                  Top-Rated
-                </Link>
+                  On TV
               </li>
+                </Link>
+                <Link className={styles.lnk} href="/tv/top_rated">
+              <li className={styles.drplink}>
+                  Top-Rated
+              </li>
+                </Link>
             </ul>
           </li>
           <li className={styles.dropd}>
-            <Link className={styles.drpopt} href="/">
-              People
-            </Link>
+          <div className={styles.drpopt}>Popular</div>
             <ul className={styles.dropdown}>
-              <li className={styles.drplink}>
                 <Link className={styles.lnk} href="/person">
+              <li className={styles.drplink}>
                   Popular People
-                </Link>
               </li>
+                </Link>
             </ul>
           </li>
-          
         </div>
         <div className={styles.right}>
           <img src="../plus.svg" alt="" />
@@ -94,9 +102,26 @@ const page = () => {
             cursor="pointer"
             size={25}
           />
-          <RiSearchLine color="#4a4a4a" cursor="pointer" size={23} />
+          <RiSearchLine
+            onClick={toogleSearchBar}
+            color="#4a4a4a"
+            cursor="pointer"
+            size={23}
+          />
         </div>
       </div>
+      {isSearchVisible && (
+        <form className={styles.form} onSubmit={searchHandler}>
+          <button>
+            <RiSearchLine color="#4a4a4a" cursor="pointer" size={23} />
+          </button>
+          <input
+            onChange={(e) => setSlug(e.target.value)}
+            type="text"
+            placeholder="Search for movie, tv show....."
+          />
+        </form>
+      )}
     </>
   );
 };

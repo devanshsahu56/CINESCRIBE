@@ -71,6 +71,8 @@ const searchResultPage = () => {
 
   const handlePageClick = (e) => {
     setPage(e.selected + 1);
+    window.scrollTo(0, 0);
+
   };
 
   useEffect(() => {
@@ -120,4 +122,3 @@ const searchResultPage = () => {
 };
 
 export default searchResultPage;
-

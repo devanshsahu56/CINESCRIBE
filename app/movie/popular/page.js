@@ -27,6 +27,9 @@ const page = () => {
     });
     dispatch(removeerror());
   }
+
+  console.log(page)
+
   const getColor = (value) => {
     // Define your color logic here
     if (value >= 70) {
@@ -69,8 +72,9 @@ const page = () => {
 
   useEffect(() => {
     dispatch(asyncaddmovies());
+    window.scrollTo(0, 0);
     
-  }, [page ]);
+  }, [page]);
 
   return (
     <>
@@ -78,7 +82,7 @@ const page = () => {
       <div className={styles.movieSec}>
         <h1>Popular Movies</h1>
         <div className={styles.movieDiv}>
-          {movies.map((m, i) => {
+          {movies.results?.map((m, i) => {
             return (
               <Link className={styles.link} key={m.id} href={`/movie/details/${m.id}`}>
                 <div className="me-3 mb-3" key={m.id}>

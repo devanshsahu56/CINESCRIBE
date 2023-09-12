@@ -15,7 +15,7 @@ export const asyncaddmovies = () => async (dispatch, getState) => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/movie/popular?api_key=223667d1239871fc4b6eeef8d0d6def8&page=${page}`
     );
-    dispatch(addmovies(data.results));
+    dispatch(addmovies(data));
   } catch (error) {
     dispatch(adderror(error.response.data.status_message));
   }
@@ -26,7 +26,7 @@ export const asyncNowPlaying = () => async (dispatch, getState) => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/movie/now_playing?api_key=223667d1239871fc4b6eeef8d0d6def8&page=${page}`
     );
-    dispatch(addnowplaying(data.results));
+    dispatch(addnowplaying(data));
   } catch (error) {
     dispatch(adderror(error.response.data.status_message));
   }
@@ -57,7 +57,7 @@ export const aysncUpcoming = () => async (dispatch, getState) => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/movie/upcoming?api_key=223667d1239871fc4b6eeef8d0d6def8&page=${page}`
     );
-    dispatch(addUpcoming(data.results));
+    dispatch(addUpcoming(data));
   } catch (error) {
     dispatch(adderror(error.response.data.status_message));
   }
@@ -68,7 +68,7 @@ export const asyncTopRated = () => async (dispatch, getState) => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/movie/top_rated?api_key=223667d1239871fc4b6eeef8d0d6def8&page=${page}`
     );
-    dispatch(addTopRated(data.results));
+    dispatch(addTopRated(data));
   } catch (error) {
     dispatch(adderror(error.response.data.status_message));
   }
